@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="login-container">
+    <h2>Iniciar sesión</h2>
+    
+    <form action="" method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+
+      <button type="submit" class="btn">Iniciar sesión</button>
+      
+      {% if error %}
+        <div class="error-message">
+          <p>{{ error }}</p>
+        </div>
+      {% endif %}
+    </form>
+
+    <p>¿No tienes una cuenta? <a href="{% url 'signup' %}">Regístrate aquí</a></p>
+  </div>
+{% endblock %}
