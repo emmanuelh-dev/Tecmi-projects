@@ -1,0 +1,43 @@
+{% extends 'covid_base.html' %}
+
+{% block content %}
+
+<h1>Listado de Registros de COVID-19</h1>
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID Registro</th>
+            <th>Fecha de Actualización</th>
+            <th>Sector</th>
+            <th>Sexo</th>
+            <th>Edad</th>
+            <th>Tipo Paciente</th>
+            <th>Fecha Ingreso</th>
+            <th>Fecha Síntomas</th>
+            <th>Resultado PCR</th>
+            <!-- Agrega más columnas según sea necesario -->
+        </tr>
+    </thead>
+    <tbody>
+        {% for registro in registros %}
+        <tr>
+            <td>{{ registro.id_registro }}</td>
+            <td>{{ registro.fecha_actualizacion }}</td>
+            <td>{{ registro.sector }}</td>
+            <td>{{ registro.sexo }}</td>
+            <td>{{ registro.edad }}</td>
+            <td>{{ registro.tipo_paciente }}</td>
+            <td>{{ registro.fecha_ingreso }}</td>
+            <td>{{ registro.fecha_sintomas }}</td>
+            <td>{{ registro.resultado_pcr }}</td>
+            <!-- Muestra más datos si es necesario -->
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="9">No hay registros disponibles.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

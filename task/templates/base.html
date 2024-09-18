@@ -73,10 +73,10 @@
               >
               {% else %}
               <a
-              href="{% url 'login' %}"
-              class="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-              >LogIn</a
-            >
+                href="{% url 'login' %}"
+                class="group flex items-center px-2 py-2 text-base font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                >LogIn</a
+              >
               {% endif %}
             </nav>
           </div>
@@ -103,6 +103,7 @@
                   class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
                   >Tasks</a
                 >
+                {% block links %} {% endblock %}
                 <a
                   href="{% url 'logout' %}"
                   class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
@@ -110,15 +111,15 @@
                 >
                 {% else %}
                 <a
-                href="{% url 'signup' %}"
-                class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-                >SignUp</a
-              >
-              <a
-              href="{% url 'login' %}"
-              class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
-              >LogIn</a
-            >
+                  href="{% url 'signup' %}"
+                  class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                  >SignUp</a
+                >
+                <a
+                  href="{% url 'login' %}"
+                  class="group flex items-center px-2 py-2 text-sm font-medium rounded-md text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                  >LogIn</a
+                >
                 {% endif%}
               </nav>
             </div>

@@ -4,38 +4,69 @@
 <div class="bg-white shadow overflow-hidden sm:rounded-lg">
     <div class="px-4 py-5 sm:px-6">
         <h1 class="text-3xl font-bold leading-tight text-gray-900">
-            Bienvenido a Django Tasks
+            Proyectos Universitarios
         </h1>
         <p class="mt-1 max-w-2xl text-sm text-gray-500">
-            Tu aplicación personal para gestionar tareas.
+            Emmanuel Díaz Leal Hernández
         </p>
     </div>
-    {% if user.is_authenticated %}
-    <div class="border-t border-gray-200">
-      <dl>
-          <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">
-                  Tareas pendientes
-              </dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {{ pending_tasks_count }}
-              </dd>
-          </div>
-          <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-              <dt class="text-sm font-medium text-gray-500">
-                  Tareas completadas
-              </dt>
-              <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {{ completed_tasks_count }}
-              </dd>
-          </div>
-      </dl>
-  </div>
-  <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
-      <a href="{% url 'tasks' %}" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-          Ver todas las tareas
-      </a>
-  </div>
-    {% endif %}
+    <div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+        <dl class="sm:divide-y sm:divide-gray-200">
+            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">
+                    Acerca de mí
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    Estudiante universitario apasionado por la tecnología y el desarrollo de software. Este sitio web es un portafolio de mis proyectos y trabajos académicos.
+                </dd>
+            </div>
+            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">
+                    Universidad
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    Tecmilenio
+                </dd>
+            </div>
+            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">
+                    Carrera
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                  IDS - Ingeniería en Desarrollo de Software
+                </dd>
+            </div>
+            <div class="py-4 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                <dt class="text-sm font-medium text-gray-500">
+                    Proyectos destacados
+                </dt>
+                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                    <ul class="border border-gray-200 rounded-md divide-y divide-gray-200">
+                        <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                            <div class="w-0 flex-1 flex items-center">
+                                <span class="ml-2 flex-1 w-0 truncate">Tasks</span>
+                            </div>
+                            <div class="ml-4 flex-shrink-0">
+                                <a href="/tasks" class="font-medium text-indigo-600 hover:text-indigo-500">Ver detalles</a>
+                            </div>
+                        </li>
+                        <li class="pl-3 pr-4 py-3 flex items-center justify-between text-sm">
+                            <div class="w-0 flex-1 flex items-center">
+                                <span class="ml-2 flex-1 w-0 truncate">Excel Covid</span>
+                            </div>
+                            <div class="ml-4 flex-shrink-0">
+                                <a href="/covid" class="font-medium text-indigo-600 hover:text-indigo-500">Ver detalles</a>
+                            </div>
+                        </li>
+                    </ul>
+                </dd>
+            </div>
+        </dl>
+    </div>
+    {% comment %} <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+        <a href="{% url 'projects' %}" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            Ver todos los proyectos
+        </a>
+    </div> {% endcomment %}
 </div>
 {% endblock %}

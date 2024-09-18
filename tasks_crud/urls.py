@@ -17,12 +17,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from task import views
+from covid import views as covid_views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
     path('', views.home, name="home"),
+    path('admin/', admin.site.urls),
     path('signup/',  views.signup, name="signup"),
     path('tasks/', views.tasks, name="tasks"),
     path('logout/', views.signout, name="logout"),
-    path('signin', views.signin, name="login")
-]
+    path('signin', views.signin, name="login"),
+    
+    
+    #Covid Project
+    path('covid/', covid_views.home, name="covid_home"),
+    path('covid/upload-excel/', covid_views.upload_excel, name='upload_excel'),
+    path('covid/listar-registros/', covid_views.listar_registros, name='listar_registros'),
+    path('success/', lambda request: render(request, 'success.html'), name='success_page'),
+
+    ]
