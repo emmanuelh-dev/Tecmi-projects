@@ -1,43 +1,44 @@
 {% extends 'covid_base.html' %}
 
 {% block content %}
-
-<h1>Listado de Registros de COVID-19</h1>
-<table border="1">
-    <thead>
-        <tr>
-            <th>ID Registro</th>
-            <th>Fecha de Actualización</th>
-            <th>Sector</th>
-            <th>Sexo</th>
-            <th>Edad</th>
-            <th>Tipo Paciente</th>
-            <th>Fecha Ingreso</th>
-            <th>Fecha Síntomas</th>
-            <th>Resultado PCR</th>
-            <!-- Agrega más columnas según sea necesario -->
-        </tr>
-    </thead>
-    <tbody>
-        {% for registro in registros %}
-        <tr>
-            <td>{{ registro.id_registro }}</td>
-            <td>{{ registro.fecha_actualizacion }}</td>
-            <td>{{ registro.sector }}</td>
-            <td>{{ registro.sexo }}</td>
-            <td>{{ registro.edad }}</td>
-            <td>{{ registro.tipo_paciente }}</td>
-            <td>{{ registro.fecha_ingreso }}</td>
-            <td>{{ registro.fecha_sintomas }}</td>
-            <td>{{ registro.resultado_pcr }}</td>
-            <!-- Muestra más datos si es necesario -->
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="9">No hay registros disponibles.</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <h1 class="text-3xl font-bold text-gray-900 mb-6">Listado de Registros de COVID-19</h1>
+    
+    <div class="overflow-x-auto bg-white shadow-md rounded-lg">
+        <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+                <tr>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID Registro</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha de Actualización</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sector</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sexo</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Edad</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Tipo Paciente</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha Ingreso</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Fecha Síntomas</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Resultado PCR</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+                {% for registro in registros %}
+                <tr class="hover:bg-gray-50">
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{ registro.id_registro }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ registro.fecha_actualizacion }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ registro.sector }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ registro.sexo }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ registro.edad }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ registro.tipo_paciente }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ registro.fecha_ingreso }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ registro.fecha_sintomas }}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ registro.resultado_pcr }}</td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="9" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">No hay registros disponibles.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 {% endblock %}

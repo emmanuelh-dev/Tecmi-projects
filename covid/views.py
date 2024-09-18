@@ -66,5 +66,5 @@ def upload_excel(request):
     return render(request, 'upload_excel.html', {'form': form})
 
 def listar_registros(request):
-    registros = RegistroCovid.objects.get(10)  # Obtiene todos los registros
+    registros = RegistroCovid.objects.all()[:1000]
     return render(request, 'listar_registros.html', {'registros': registros})
