@@ -1,9 +1,12 @@
 {% extends 'covid_base.html' %}
 
 {% block content %}
-<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-4">
     <h1 class="text-3xl font-bold text-gray-900 mb-6">Listado de Registros de COVID-19</h1>
-    
+    <div class="mt-6 bg-white shadow-md rounded-lg p-4">
+        <canvas id="sectorChart"></canvas>
+    </div>
+
     <div class="overflow-x-auto bg-white shadow-md rounded-lg">
         <table class="min-w-full divide-y divide-gray-200">
             <thead class="bg-gray-50">
@@ -39,6 +42,44 @@
                 {% endfor %}
             </tbody>
         </table>
+        <div class="flex justify-between mt-4 px-4 py-3 bg-gray-50 border-t border-gray-200 sm:px-6">
+            <span class="text-sm text-gray-700">
+                Página {{ registros.number }} de {{ registros.paginator.num_pages }}.
+            </span>
+            <div>
+                {% if registros.has_previous %}
+                    <a href="?page=1" class="text-sm text-gray-700 font-semibold">Primero</a>
+                    <a href="?page={{ registros.previous_page_number }}" class="ml-2 text-sm text-gray-700 font-semibold">Anterior</a>
+                {% endif %}
+                {% if registros.has_next %}
+                    <a href="?page={{ registros.next_page_number }}" class="ml-2 text-sm text-gray-700 font-semibold">Siguiente</a>
+                    <a href="?page={{ registros.paginator.num_pages }}" class="ml-2 text-sm text-gray-700 font-semibold">Último</a>
+                {% endif %}
+            </div>
+        </div>
     </div>
+    <script>
+        var ctx = document.getElementById('sectorChart').getContext('2d');
+        var sectorChart = new Chart(ctx, {
+            type: 'bar',  // Tipo de gráfico
+            data: {
+                labels: {{ sectores|safe }},  // Sectores
+                datasets: [{
+                    label: 'Cantidad de casos por sector',
+                    data: {{ cantidades|safe }},  // Cantidades
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
 </div>
 {% endblock %}

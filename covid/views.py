@@ -4,6 +4,9 @@ from .forms import ExcelUploadForm
 from .models import RegistroCovid
 from .models import RegistroCovid
 from .models import RegistroCovid
+from django.core.paginator import Paginator
+from django.db.models import Count
+
 def home(request):
     return render(request, 'covid_home.html')
 
@@ -66,5 +69,19 @@ def upload_excel(request):
     return render(request, 'upload_excel.html', {'form': form})
 
 def listar_registros(request):
-    registros = RegistroCovid.objects.all()[:1000]
-    return render(request, 'listar_registros.html', {'registros': registros})
+    registros_list = RegistroCovid.objects.all()
+    paginator = Paginator(registros_list, 50)
+
+    page_number = request.GET.get('page')
+    registros = paginator.get_page(page_number)
+
+    sectores_data = RegistroCovid.objects.values('sector').annotate(cantidad=Count('sector'))
+
+    sectores = [sector['sector'] for sector in sectores_data]
+    cantidades = [sector['cantidad'] for sector in sectores_data]
+
+    return render(request, 'listar_registros.html', {
+        'registros': registros,
+        'sectores': sectores,
+        'cantidades': cantidades
+    })
